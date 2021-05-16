@@ -19,7 +19,7 @@ def ST_DBSCAN(data,eps1,eps2,minPts):
     # 获得空间距离矩阵
     disMat = compute_squared_EDM(data[:,1:])
     # 将矩阵的中小于minPts的数赋予1，大于minPts的数赋予零，然后1代表对每一行求和,然后求核心点坐标的索引
-    # 注意：np.where()的两种用法（搜索、替换功能）
+    
     core_points_index = np.where(np.sum(np.where((disMat <= eps1) &(timeDisMat<=eps2), 1, 0), axis=1) >= minPts)[0]
     # 初始化类别，-1代表未分类。
     labels = np.full((n,), -1)
